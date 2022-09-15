@@ -2,8 +2,8 @@ import React, { Fragment, useState } from 'react';
 import Error from './Error';
 
 
-const Question = () => {
-    // Define state for budget
+const Question = ({ saveActualbudget, saveRemaining }) => {
+    // Define state for the budget that user put in
     const [budget, saveBudget] = useState(0);
     const [error, saveError] = useState(false);
     
@@ -24,6 +24,8 @@ const Question = () => {
 
         // After validation
         saveError(false);
+        saveActualbudget(budget);
+        saveRemaining(budget);
     }
 
     return ( 
