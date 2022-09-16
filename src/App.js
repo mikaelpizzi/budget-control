@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import BudgetControl from './BudgetControl';
 import Form from './components/Form';
+import List from './components/List';
 import Question from './components/Question';
 
 function App() {
@@ -26,20 +28,26 @@ function App() {
           {showquestion 
           ?
             <Question
-            saveActualbudget={saveActualbudget}
-            saveRemaining={saveRemaining}
-            updateShowquestion={updateShowquestion}
+              saveActualbudget={saveActualbudget}
+              saveRemaining={saveRemaining}
+              updateShowquestion={updateShowquestion}
             />
           :  
             <div className='row'>
               <div className='one-half column'>
                 <Form 
-                addNewExpense={addNewExpense}
+                  addNewExpense={addNewExpense}
                 />
               </div>
 
               <div className='one-half column'>
-                2
+                <List 
+                  expenses={expenses}
+                />
+                <BudgetControl
+                  actualbudget={actualbudget}
+                  remaining={remaining}
+                />
               </div>
             </div>
           }
