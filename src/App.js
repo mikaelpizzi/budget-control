@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BudgetControl from './BudgetControl';
+import BudgetControl from './components/BudgetControl';
 import Form from './components/Form';
 import List from './components/List';
 import Question from './components/Question';
@@ -29,7 +29,7 @@ function App() {
     }
     saveCreatebudget(false);
 
-  }, [expense])
+  }, [expense, createbudget, expenses, remaining])
 
   return (
     <div className='container'>
