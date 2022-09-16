@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Error from './Error';
 import shortid from 'shortid';
 
-const Form = ({ addNewExpense }) => {
+const Form = ({ saveExpense, saveCreatebudget }) => {
     const [name, setName] = useState('');
     const [amount, setAmount] = useState(0);
     const [error, saveError] = useState(false);
@@ -10,7 +10,7 @@ const Form = ({ addNewExpense }) => {
     // When user adds an expense
     const addExpense = e => {
         e.preventDefault(); 
-        
+
         // Validate
         if (amount < 1 || isNaN(amount) || name.trim() === '') {
             saveError(true);
@@ -26,7 +26,8 @@ const Form = ({ addNewExpense }) => {
         }
 
         // Pass the expense to principal component for list it
-        addNewExpense(expense);
+        saveExpense(expense);
+        saveCreatebudget(true);
 
         // Reset form 
         setName('');
