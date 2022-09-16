@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import Error from './Error';
+import shortid from 'shortid';
 
 const Form = (props) => {
     const [name, setName] = useState('');
     const [amount, setAmount] = useState(0);
+    const [error, saveError] = useState(false);
 
     // When user adds an expense
-    const addExpense = e => { 
+    const addExpense = e => {
+        e.preventDefault(); 
         // Validate
-
+        if (amount < 1 || isNaN(amount) || name.trim() === '') {
+            saveError(true);
+            return;
+        }
+        saveError(false);
         // Build the expense
-
+        const expense = {
+            name,
+            amount,
+            id: shortid.generate()
+        }
+        console.log(expense);
         // Pass the expense to principal component for list it
 
         // Reset form 
@@ -20,6 +33,13 @@ const Form = (props) => {
         onSubmit={addExpense}
         >
             <h2>Add your expenses here</h2>
+
+            {error 
+            ? 
+                <Error message='Both fields are required, budget must be greater than 0' />
+            : 
+                false
+            }
 
             <div className='campo'>
                 <label>Expense Name</label>
