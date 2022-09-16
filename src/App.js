@@ -7,7 +7,7 @@ import Question from './components/Question';
 function App() {
   
   // Define state for actual and remaining budget
-  const [actualbudget, saveActualbudget] = useState(0);
+  const [initialbudget, saveInitialbudget] = useState(0);
   const [remaining, saveRemaining] = useState(0);
   const [showquestion, updateShowquestion] = useState(true);
   const [expenses, saveExpenses] = useState([]);
@@ -40,7 +40,7 @@ function App() {
           {showquestion 
           ?
             <Question
-              saveActualbudget={saveActualbudget}
+              saveInitialbudget={saveInitialbudget}
               saveRemaining={saveRemaining}
               updateShowquestion={updateShowquestion}
             />
@@ -58,7 +58,7 @@ function App() {
                   expenses={expenses}
                 />
                 <BudgetControl
-                  actualbudget={actualbudget}
+                  initialbudget={initialbudget}
                   remaining={remaining}
                 />
               </div>
